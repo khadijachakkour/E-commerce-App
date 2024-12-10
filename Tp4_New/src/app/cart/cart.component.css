@@ -1,0 +1,52 @@
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.remove-button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  color: #0056b3;
+}
+
+.remove-button span {
+  display: inline-block;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hide-button {
+  background-color: rgb(255, 0, 0);
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.btn-outline-primary, .btn-outline-secondary, .btn-outline-danger {
+  border-radius: 50px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.small-input {
+  width: 50px; /* Ajustez cette largeur selon vos besoins */
+  padding: 5px; /* Ajustez le padding selon vos besoins */
+  text-align: center; /* Centrer le texte */
+}
+
+.quantity-controls .form-control {
+  max-width: 70px; /* Ajustez cette largeur selon vos besoins */
+  text-align: center; /* Centrer le texte */
+}

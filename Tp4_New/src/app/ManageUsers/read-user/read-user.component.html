@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client List</title>
+
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="header mb-4">
+      <h2 class="text-center mb-0">Client List</h2>
+    </div>
+    <div *ngIf="clientUsers.length === 0" class="alert alert-warning text-center">Aucun client trouvé.</div>
+    <div *ngIf="clientUsers.length > 0" class="card">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let user of clientUsers">
+          <div class="client-info">
+            <img src="assets/images/clientlogo.png" alt="Client Logo" class="client-logo">
+            <div>
+              <strong>{{ user.firstName }} {{ user.lastName }}</strong><br>
+              <small class="text-muted">{{ user.email }}</small>
+            </div>
+          </div>
+          <button (click)="deleteUser(user._id)" class="btn btn-danger btn-sm">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</body>
+</html>

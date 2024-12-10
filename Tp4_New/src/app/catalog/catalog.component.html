@@ -1,0 +1,58 @@
+<div class="catalog-container">
+  <ul class="products">
+  <li class="product-item" *ngFor="let product of products">
+    <div class="product">
+
+      <div class="product-image">
+        <img [src]="'/assets/images/' + product.productImage" [alt]="product.productTitle" i18n-alt>
+      </div>
+
+      <div class="product-details">
+        <div class="product-info">
+          <div class="product-info d-flex justify-content-between">
+            <div class="description" i18n><strong>{{ product.productTitle |uppercase}}</strong></div>
+            <div i18n><strong>{{ product.productPrice}} </strong></div>
+          </div>
+
+          <div class="buttons d-flex justify-content-between align-items-center">
+            <button class="btn btn-primary details-button" (click)="toggleProductDetails(product)" [ngClass]="{ 'hide-button': isProductDetailsVisible(product) }" i18n>
+              <i class="fas fa-info-circle"></i> {{ getProductDetailsButtonText(product) }}
+            </button>
+            <div class="right" *ngIf="user?.role === 'client'">
+            <ng-container *ngIf="!isProductInCart(product)">
+              <button class="btn btn-primary buy-button" (click)="addToCart(product)" i18n>
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+            </ng-container>
+
+            <ng-container *ngIf="isProductInCart(product)">
+              <div class="input-group quantity-controls">
+                <button class="btn btn-secondary quantity-button" (click)="decreaseQuantity(product)" i18n>
+                  <i class="fas fa-minus"></i>
+                </button>
+                <input type="text" class="form-control quantity-display" [value]="getQuantityInCart(product)" readonly>
+                <button class="btn btn-secondary quantity-button" (click)="increaseQuantity(product)">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </ng-container>
+</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div *ngIf="isProductDetailsVisible(product)" class="product-details-container">
+        <!--Passer les détails du produit au child component-->
+        <app-product-details [product]="product"></app-product-details>
+      </div>
+
+  </li>
+</ul>
+
+
+</div>
+
+
+

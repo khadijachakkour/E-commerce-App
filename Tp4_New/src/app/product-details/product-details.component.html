@@ -1,0 +1,12 @@
+<!--product est affiché si elle est définie et non nulle.-->
+<div *ngIf="product" class="product-details-container">
+  <div i18n><strong>{{ product.productTitle |titlecase}}</strong></div>
+  <div i18n><strong>Price:</strong> {{ product.productPrice }}</div>
+  <div i18n><strong>Product Description : </strong> {{ product.description |titlecase}}</div>
+
+
+  <div class="product-image">
+    <img sizes="500px" [src]="'/assets/images/' + product.productImage" [alt]="product.productTitle"
+      [style.width.px]="product.productImage === 'iphone.jpg'||'AirPods.jpg' ? 400 : null" i18n-alt>
+  </div>
+</div>

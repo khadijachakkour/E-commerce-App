@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+
+      <div *ngIf="cartItems.length === 0" class="text-center">
+        <h1 i18n>Your Cart</h1>
+        <h2 i18n>You have no items in your cart</h2>
+        <img src="/assets/images/cartEmpty.jpeg"  alt="Cart is empty" width="400px" i18n-alt/>
+      </div>
+
+      <div *ngFor="let item of cartItems" class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title" i18n>{{ item.itemProduct.productTitle |titlecase}}</h5>
+          <p class="card-text" i18n>Quantity: {{ item.quantity }}</p>
+          <p class="card-text" i18n>Price per item: {{ item.itemProduct.productPrice }}</p>
+          <p class="card-text" i18n>Total Price: {{ calculateTotal(item) }} DH</p>
+          <div class="d-flex align-items-center">
+            <div class="input-group quantity-controls">
+              <button class="btn btn-secondary quantity-button" (click)="decreaseQuantity(item)" i18n>
+                <i class="fas fa-minus"></i>
+              </button>
+              <input type="text" class="form-control quantity-display small-input" [value]="getQuantityInCart(item)" readonly>
+              <button class="btn btn-secondary quantity-button" (click)="increaseQuantity(item)">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-image">
+              <img sizes="300px"   [src]="'/assets/images/' + item.itemProduct.productImage"
+              [alt]="item.itemProduct.productTitle" [style.width.px]="item.itemProduct.productImage === 'iphone.jpg'||'AirPods.jpg' ? 200 : null" i18n-alt>
+          </div>
+
+          <!-- Bouton pour afficher/masquer le bouton de confirmation de suppression -->
+          <button class="remove-button" (click)="toggleRemoveConfirmation(item)" [ngClass]="{ 'hide-button': isRemoveConfirmationVisible(item)}" i18n>
+            <span *ngIf="!isRemoveConfirmationVisible(item)" >
+              <i class="fas fa-trash"></i> Remove
+            </span>
+            <span *ngIf="isRemoveConfirmationVisible(item)" (click)="removeFromCart(item)"><i class="fas fa-trash"></i>Confirm</span>
+          </button>
+
+        </div>
+      </div>
+
+      <div *ngIf="cartItems.length != 0" class="text-center">
+        <button class="btn btn-warning" (click)="clearCart()" i18n>
+          <i class="fas fa-trash"></i> Clear Cart
+        </button>
+        </div>
+
+    </div>
+    </div>

@@ -1,0 +1,26 @@
+<form (submit)="addProduct(productTitle?.value ?? '', productPrice && +productPrice.value || 0, category?.value ?? '', description?.value ?? '', productImage?.value ?? '')">
+  <div class="mb-3">
+    <label for="productTitle" class="form-label">Title</label>
+    <input type="text" class="form-control" id="productTitle" #productTitle required>
+  </div>
+  <div class="mb-3">
+    <label for="productImage" class="form-label">Image Path</label>
+    <input type="text" class="form-control" id="productImage" #productImage required>
+  </div>
+  <div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+    <input type="text" class="form-control" id="category" #category required>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" #description required></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="productPrice" class="form-label">Price</label>
+    <input type="number" class="form-control" id="productPrice" #productPrice required>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+  </div>
+</form>

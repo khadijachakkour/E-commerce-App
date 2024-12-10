@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form #registerForm="ngForm" class="form" (ngSubmit)="registerUser(userData)">
+        <div class="sign-up" i18n>Sign Up</div>
+        <div class="sub-text" i18n>To create an account...</div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+          </div>
+          <input name="firstName" required #firstName="ngModel" [(ngModel)]="userData.firstName" placeholder="First Name"
+            type="text" class="form-control" i18n-placeholder>
+        </div>
+        <em class="error" *ngIf="firstName.invalid && firstName.touched" i18n>First Name is required</em>
+        <!-- Ajoutez le champ de sélection du rôle -->
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-users"></i></span>
+          </div>
+          <select name="role" required [(ngModel)]="userData.role" class="form-control">
+            <option value="client">Client</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+          </div>
+          <input name="lastName" required #lastName="ngModel" [(ngModel)]="userData.lastName" placeholder="Last Name"
+            type="text" class="form-control" i18n-placeholder>
+        </div>
+        <em class="error" *ngIf="lastName.invalid && lastName.touched" i18n>Last Name is required</em>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+          </div>
+          <input name="email" required email #email="ngModel" [(ngModel)]="userData.email" placeholder="Email Address"
+            type="email" class="form-control" i18n-placeholder>
+        </div>
+        <em class="error" *ngIf="email.invalid && email.touched" i18n>Must be a valid email format</em>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+          </div>
+          <input name="password" required minlength="6" #password="ngModel" [(ngModel)]="userData.password" placeholder="Password"
+            type="password" class="form-control" i18n-placeholder/>
+        </div>
+        <em class="error" *ngIf="password.errors?.['required'] && password.touched" i18n>Password is required</em>
+        <em class="error" *ngIf="password.errors?.['minlength'] && password.touched" i18n>Password must be at least 6 characters long</em>
+        <div class="buttons">
+          <button type="submit" [disabled]="registerForm.form.invalid" class="button cta" i18n>
+            Sign Up
+          </button>
+        </div>
+        <div class="form-group" i18n>
+          <p class="text-muted">Already have an account? <a href="/signin">Sign In</a></p>
+        </div>
+        <div class="registerError" *ngIf="registerError" i18n>
+          Sign Up Error!! Please try again.
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

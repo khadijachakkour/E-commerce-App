@@ -1,0 +1,71 @@
+.container {
+  padding: 50px;
+}
+
+.sign-up {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sub-text {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.text-muted {
+  color: #666;
+}
+
+.text-muted a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.text-muted a:hover {
+  text-decoration: underline;
+}
+
+em.error {
+  padding: 2px 5px;
+  background-color: #d25ca1;
+  color: white;
+  font-style: normal;
+}
+
+input.error {
+  border: 1px solid #d25ca1;
+}

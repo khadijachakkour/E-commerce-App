@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="background"></div>
+  <div class="content">
+    <img class="logo" src="/assets/images/techstore.jpg" alt="Logo" i18n-alt>
+    <div *ngIf="currentUser" class="user-name">Hello, {{ currentUser.firstName }} {{ currentUser.lastName }}</div>
+    <div *ngIf="currentUser" class="welcome-message">Welcome to <span class="tech">Tech</span><span class="store">Store</span>!</div>
+    <div class="search-bar">
+      <input type="search" class="search-input" placeholder="Search Products" [(ngModel)]="searchQuery" (input)="searchProducts()" i18n-placeholder>
+    </div>
+    <div class="product-list">
+      <app-catalog *ngIf="!searchQuery; else searchResultsSection" i18n></app-catalog>
+      <ng-template #searchResultsSection>
+        <div class="search-results">
+          <app-catalog *ngIf="searchResults.length > 0" [products]="searchResults" i18n></app-catalog>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
