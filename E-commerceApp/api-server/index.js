@@ -31,26 +31,6 @@ MongoClient.connect(url)
   });
 
 
-/* Route pour récupérer le profil de l'utilisateur
-app.get("/api/profile", authenticateUser, (req, res) => {
-  const userId = req.user.id;
-  // Recherchez le profil de l'utilisateur dans la base de données en utilisant son ID
-  usersCollection.findOne({ _id: userId })
-    .then(user => {
-      if (user) {
-        // Renvoyer le profil de l'utilisateur au format JSON
-        res.status(200).json(user.profile);
-      } else {
-        // Renvoyer une erreur si l'utilisateur n'est pas trouvé
-        res.status(404).json({ error: "Profil utilisateur non trouvé." });
-      }
-    })
-    .catch(error => {
-      console.error("Erreur lors de la recherche du profil de l'utilisateur :", error);
-      res.status(500).json({ error: "Erreur lors de la recherche du profil de l'utilisateur." });
-    });
-});
-*/
 
 //Endpoint pour ajouter un produit
 app.post("/api/products", (req, res) => {
